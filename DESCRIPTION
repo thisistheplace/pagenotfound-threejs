@@ -1,0 +1,13 @@
+Package: pagenotfoundThreejs
+Title: Page not found 404 component for python Dash
+Version: 0.0.1
+Description: Page not found 404 component for python Dash
+Depends: R (>= 3.0.2)
+Imports: 
+Suggests: 
+License: GPL-3.0 + file LICENSE
+URL: https://github.com/thisistheplace/pagenotfound-threejs
+BugReports: https://github.com/thisistheplace/pagenotfound-threejs/issues
+Encoding: UTF-8
+LazyData: true
+KeepSource: true

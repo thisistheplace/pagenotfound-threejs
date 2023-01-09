@@ -1,0 +1,11 @@
+include pagenotfound_threejs/pagenotfound_threejs.min.js
+include pagenotfound_threejs/pagenotfound_threejs.min.js.map
+include pagenotfound_threejs/async-*.js
+include pagenotfound_threejs/async-*.js.map
+include pagenotfound_threejs/*-shared.js
+include pagenotfound_threejs/*-shared.js.map
+include pagenotfound_threejs/metadata.json
+include pagenotfound_threejs/package-info.json
+include README.md
+include LICENSE
+include package.json
