@@ -1,61 +1,41 @@
-import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * ExampleComponent is an example component.
- * It takes a property, `label`, and
- * displays it.
- * It renders an input with the property `value`
- * which is editable by the user.
- */
-export default class PagenotfoundThreejs extends Component {
-    render() {
-        const {id, label, setProps, value} = this.props;
+import React, { Suspense } from 'react'
+import { Canvas} from '@react-three/fiber'
+import {Loader, OrbitControls} from '@react-three/drei'
 
-        return (
-            <div id={id}>
-                ExampleComponent: {label}&nbsp;
-                <input
-                    value={value}
-                    onChange={
-                        /*
-                         * Send the new value to the parent component.
-                         * setProps is a prop that is automatically supplied
-                         * by dash's front-end ("dash-renderer").
-                         * In a Dash app, this will update the component's
-                         * props and send the data back to the Python Dash
-                         * app server if a callback uses the modified prop as
-                         * Input or State.
-                         */
-                        e => setProps({ value: e.target.value })
-                    }
-                />
-            </div>
-        );
-    }
+import {Morph} from "../model/morph"
+import {Lights} from "../model/lights"
+
+const Model = (props) => {
+    return (
+        <>
+            <Morph/>
+            <Lights/>
+            <fog args={[0xe0e0e0, 20, 100]}/>
+        </>
+    )
 }
 
-PagenotfoundThreejs.defaultProps = {};
+function PagenotfoundThreejs(props) {
+    return (
+        <div id={props.id} style={{"height":"100%", "width":"100%"}}>
+            <Canvas shadows style={{'background':'white'}} camera={{position: [-5, 3, 10], fov:45, aspect:window.innerWidth / window.innerHeight, near: 0.25, far: 100}}>
+                <OrbitControls set/>
+                <Suspense fallback={null}>
+                    <Model {...props}/>
+                </Suspense>
+            </Canvas>
+            <Loader />
+        </div>
+    )
+}
+
+PagenotfoundThreejs.defaultProps = {
+};
 
 PagenotfoundThreejs.propTypes = {
-    /**
-     * The ID used to identify this component in Dash callbacks.
-     */
-    id: PropTypes.string,
-
-    /**
-     * A label that will be printed when this component is rendered.
-     */
-    label: PropTypes.string.isRequired,
-
-    /**
-     * The value displayed in the input.
-     */
-    value: PropTypes.string,
-
-    /**
-     * Dash-assigned callback that should be called to report property changes
-     * to Dash, to make them available for callbacks.
-     */
-    setProps: PropTypes.func
+    id: PropTypes.string.isRequired
 };
+
+export default PagenotfoundThreejs;

@@ -280,3 +280,7 @@ Manifest.toml
 JuliaManifest.toml
 
 R/
+
+# Build output
+pagenotfound_threejs/
+.DS_Store
