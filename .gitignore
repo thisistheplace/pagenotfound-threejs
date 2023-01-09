@@ -283,4 +283,6 @@ R/
 
 # Build output
 pagenotfound_threejs/
+inst/
+deps/
 .DS_Store
